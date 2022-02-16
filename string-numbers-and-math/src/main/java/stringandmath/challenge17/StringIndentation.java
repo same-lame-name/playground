@@ -3,10 +3,8 @@ package stringandmath.challenge17;
 import commons.utils.executionutil.Approach;
 
 import java.util.List;
-import java.util.function.Function;
 import java.util.function.IntFunction;
 import java.util.stream.IntStream;
-import java.util.stream.Stream;
 
 import static java.util.stream.Collectors.joining;
 
@@ -32,7 +30,9 @@ public final class StringIndentation {
 
             return IntStream.range(0, listOfString.size())
                     .mapToObj(idx -> listOfString.get(idx).indent(idx))
-                    .collect(joining());
+                    .collect(
+                            joining()
+                    );
         }
     }
 
@@ -52,7 +52,6 @@ public final class StringIndentation {
 //            Alternatively instead of String.repeat we could have used Stream.generate(() -> " ").limit(idx)
 //            IntFunction<String> line = index -> Stream.generate(() -> " ").limit(index).collect(joining()) + listOfString.get(index) + "\n";
             IntFunction<String> line = index -> " ".repeat(index) + listOfString.get(index) + "\n";
-
             return IntStream.range(0, listOfString.size())
                     .mapToObj(line)
                     .collect(
